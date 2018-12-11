@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for order in orders %}
+        <div class="order">
+			<h1>{{ order.cust_id }}</h1>
+            <p>{{ order.notes|linebreaksbr }}</p>
+            <a class="btn btn-default" href="{% url 'checked_and_delivered' pk=order.pk %}">Delivered</a>
+        </div>
+    {% endfor %}
+{% endblock %}

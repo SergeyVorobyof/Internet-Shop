@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <div class="customer">
+        <h2>{{ customer.name }}</h2>
+        <p>{{ customer.email|linebreaksbr }}</p>
+    </div>
+    <hr>
+    <a class="btn btn-default" href="{% url 'add_order_to_customer' pk=customer.pk %}">Add order</a>
+    {% for order in customer.orders.all %}
+            <div class="order">
+                <h2><a href="{% url 'good_buy' pk=order.pk %}">Order number: {{ order.pk }}</a></h2>
+                <p>Pay by {{ order.form_of_payment }}</p>
+                <p>Notes: {{ order.notes }}</p>
+                <div class="date">{{ order.date_completed }}</div>
+            </div>
+        {% empty %}
+            <p>No orders here yet :(</p>
+    {% endfor %}
+
+{% endblock %}

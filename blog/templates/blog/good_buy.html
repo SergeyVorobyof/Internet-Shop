@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="order">
+    <h1>Order number: {{order.pk}}</h1>
+    	{% for good in order.goods.all %}
+            	<div class="good">
+            	    <h2>Customer {{order.cust_id}}</h2>
+                	<strong>Name of good {{ good.name }}</strong>
+                	<p>Good ID:{{ good.pk }}</p>
+            	</div>
+        	{% empty %}
+        	    <p>No orders here yet :(</p>
+		{% endfor %}
+	</div>
+{% endblock %}

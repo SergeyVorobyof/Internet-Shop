@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for customer in customers %}
+        <div class="customer">
+        	<h1><a href="{% url 'customer_detail' pk=customer.pk %}">{{ customer.name }}</a></h1>
+            <p>{{ customer.email }}</p>
+            <p>{{ customer.organization }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

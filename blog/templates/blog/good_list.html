@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for good in goods %}
+        <div class="good">
+        	<h1><a href="{% url 'good_detail' pk=good.pk %}">{{ good.name }}</a></h1>
+            <p>{{ good.description }}</p>
+            <p>{{ good.picture }}</p>
+            <h3>G.pk below</h1>
+            <p>{{good.pk}}</p>
+            <a class="btn btn-default" href="{% url 'good_choose' pk=good.pk %}">Choose</a>
+        </div>
+    {% endfor %}
+{% endblock %}
