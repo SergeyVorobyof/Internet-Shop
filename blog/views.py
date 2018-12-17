@@ -153,3 +153,16 @@ def register(request):
 		args = {'form':form}
 		return render(request, 'blog/reg_form.html', args)
 """
+def view_spec_list(request, number, pk):
+    if number == 1:
+        goods = Good.objects.get(name='apelsin')
+        return render(request, 'blog/spec_num_list.html', {'goods': goods})
+    if number == 2;
+        posts = Post.objects.order_by('published_date')[0:1].get()
+        return render(request, 'blog/post_draft_list.html', {'posts': posts})
+    if number == 3:
+        customers = Customer.objects.get(name__exact="Sergey")
+        return render(request, 'blog/spec_num_list.html', {'customers': customers})
+    if number == 4:
+        entries = Entry.objects.select_related().get(id=pk)
+        return render(request, 'blog/spec_num_list.html', {'entries': entries})
